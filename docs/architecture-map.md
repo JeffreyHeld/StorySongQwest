@@ -258,6 +258,7 @@ Ask these questions in order.
 | Promotion audit         | `qwest-design-system/docs`                        | Experience Lab audit      | Audit reflects current prototype readiness and gaps.                        |
 | Runtime roadmap         | `story-song-qwest/docs`                           | Runtime promotion roadmap | Roadmap defines stable promotion rules.                                     |
 | Runtime milestones      | `story-song-qwest/docs`                           | Runtime milestone file    | Milestones define executable tasks and acceptance criteria.                 |
+| Engineering standards   | Root `docs/engineering-standards.md`              | Standards doc             | Current performance, accessibility, testing, security, observability, and release verification expectations. |
 | Workspace ADRs          | Root `docs/decisions`                             | ADR files                 | Required for expensive-to-reverse workspace-level architecture decisions.   |
 | Repo-local ADRs         | `<repo>/docs/decisions` when needed               | ADR files                 | Use only for implementation decisions scoped to that repository.            |
 | Changelog/release notes | `story-song-qwest/docs` recommended               | Release docs              | Required for shipped beta/public changes.                                   |

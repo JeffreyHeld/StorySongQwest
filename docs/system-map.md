@@ -11,50 +11,42 @@ revise the architecture map first.
 
 ```text
 Phase Specs
-Phase 0–7 product and platform intent
-            │
-            ▼
+Phase 0-7 product and platform intent
+            |
+            v
 qwest-design-system
 Experience Lab
-            │
-            ▼
-Prototype
+            |
+            v
+Static Evidence
 reader, listener, authoring,
-gallery
-      │                 │
-      │                 ▼
-      │        SongQwest Listener /
-      │        Timeline Prototype
-      │                 │
-      └────────┬────────┘
-               ▼
-Promotion Audit
-what is ready, missing,
-duplicated
-               │
-               ▼
-Runtime Promotion
-Roadmap
-promotion rules and levels
-               │
-               ▼
-Runtime Milestones
-execution sequence
-        │                     │
-        ▼                     ▼
-story-song-qwest      SongQwest Runtime
-production runtime    listener, lyric,
-                      audio, timeline
-        │                     │
-        └────────┬────────────┘
-                 ▼
-Published Bundle
-portable qwest output
-                 │
-                 ▼
-Reader Runtime
-StoryQwest consumer
-experience
+gallery, SongQwest listener/timeline
+            |
+            v
+Validation / Contracts
+UX review, accessibility review,
+audio abstraction, mixer contracts,
+timeline contracts, data contracts
+            |
+            v
+Promotion Candidate
+validated evidence with explicit
+promotion level and blockers resolved
+            |
+            v
+Runtime Planned
+runtime milestone, acceptance criteria,
+verification, prototype disposition
+            |
+            v
+story-song-qwest Runtime
+production implementation with state,
+tests, accessibility, deployment docs
+            |
+            v
+Integrated
+production runtime, docs, tests, and
+prototype disposition complete
 ```
 
 ## Development Flow
@@ -65,33 +57,43 @@ experience
 2. **qwest-design-system**
    - Experience Lab
 
-3. **Prototype**
+3. **Static Evidence**
    - Reader
    - Listener
    - Authoring
    - Gallery
+   - SongQwest listener/timeline evidence
 
-4. **SongQwest Listener / Timeline Prototype**
-   - Parallel prototype feeding into the promotion process.
+4. **Validation / Contracts**
+   - UX review
+   - Accessibility review
+   - Audio abstraction
+   - Mixer contracts
+   - Timeline contracts
+   - Data contracts
 
-5. **Promotion Audit**
-   - What is ready
-   - What is missing
-   - What is duplicated
+5. **Promotion Candidate**
+   - Validated evidence
+   - Explicit promotion level
+   - Blockers resolved or documented
 
-6. **Runtime Promotion Roadmap**
-   - Promotion rules
-   - Promotion levels
+6. **Runtime Planned**
+   - Runtime milestone
+   - Acceptance criteria
+   - Verification steps
 
-7. **Runtime Milestones**
-   - Execution sequence
+7. **Production Runtime**
+   - StoryQwest runtime
+   - SongQwest runtime only after validation/contracts
 
-8. **Production Runtime**
-   - StoryQwest production runtime
-   - SongQwest runtime (listener, lyric, audio, timeline)
+8. **Integrated**
+   - Runtime implementation complete
+   - Tests and docs complete
+   - Prototype disposition recorded
 
 9. **Published Bundle**
    - Portable Qwest output
 
-10. **Reader Runtime**
-    - StoryQwest consumer experience
+10. **Reader / Listener Runtime**
+    - StoryQwest reader experience
+    - SongQwest listener experience only after integration

@@ -1,7 +1,7 @@
 # StorySongQwest Workspace
 
-This workspace contains two active repositories plus workspace-level
-documentation for routing work between them.
+This workspace contains three Git repositories: the root workspace/docs
+repository plus two active product repositories.
 
 ## Start Here
 
@@ -19,9 +19,9 @@ Read these documents in order:
 
 ```text
 StorySongQwest/
-├── qwest-design-system/      # Experience Lab: UX prototypes and validation
-├── story-song-qwest/         # Runtime: production app, platform, publishing
-├── docs/                     # Workspace architecture, system maps, ADRs
+├── qwest-design-system/      # Git repo: Experience Lab and prototype/design system
+├── story-song-qwest/         # Git repo: product runtime, platform, publishing
+├── docs/                     # Root Git repo: workspace maps, standards, ADRs
 └── README.md                 # Workspace entry point
 ```
 
@@ -41,9 +41,9 @@ StorySongQwest/
 
 | Repository | Role |
 | --- | --- |
-| `qwest-design-system` | Prototype visual design, interaction models, reader/listener experiences, authoring concepts, accessibility states, and responsive behavior. |
+| Root workspace/docs repo | Own workspace-level architecture, feature routing, system maps, engineering standards, and workspace-wide ADRs. |
+| `qwest-design-system` | Own prototype visual design, interaction models, reader/listener experiences, authoring concepts, accessibility states, and responsive behavior. |
 | `story-song-qwest` | Own production runtime logic, canonical data contracts, Firebase, Cloudflare, publishing, tests, deployment, and runtime documentation. |
-| `docs` | Own workspace-level architecture, feature routing, system maps, and workspace-wide ADRs. |
 
 ## Documentation Authority
 
