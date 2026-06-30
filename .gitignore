@@ -1,0 +1,26 @@
+.DS_Store
+
+# Local testing
+Testing/
+
+# macOS
+**/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Never track nested repositories
+qwest-design-system/.git
+story-song-qwest/.git
+
+# Child repositories
+/qwest-design-system/
+/story-song-qwest/
+
+# Local testing
+/Testing/
+
+# macOS
+.DS_Store
+**/.DS_Store
