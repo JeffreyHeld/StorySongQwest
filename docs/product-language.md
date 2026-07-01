@@ -39,15 +39,121 @@ ecosystem. They should remain media-agnostic whenever practical.
 | --- | --- | --- |
 | Platform | The shared product ecosystem that includes StoryQwest, SongQwest, creator tooling, audience surfaces, marketplace/community surfaces, and shared account experiences. | Use for cross-product product strategy and shared capabilities. |
 | Runtime | The production implementation that renders Qwests, manages state, validates content, publishes bundles, integrates services, and meets accessibility, testing, performance, and release standards. | Use for production systems, not lab prototypes or product navigation. |
-| Experience | A user-facing surface or workflow, such as Browse, Library, Reader, Listener, Cover Art Studio, or Media Library. | Prefer this over rigid account-type language when describing how a person is using the platform. |
+| Experience | A cohesive way a person interacts with the platform. An experience may include multiple screens, workflows, runtime components, and Qwest mechanics working together toward a single purpose. | Prefer this over rigid account-type or page-level language. Reader, Listener, Story Authoring, Library, and Cover Art Studio are experiences, not just pages. |
 | Home | The primary signed-in landing surface for returning to recent activity and relevant next actions. | Use for account-level orientation, not in-Qwest navigation. |
 | Browse | The platform surface for finding Qwests, creators, collections, and featured content. | Prefer Browse over Discover for navigation because Discovery is reserved Qwest terminology. |
-| Library | A user's saved, owned, claimed, started, bookmarked, or otherwise available Qwests and collections. | Use for durable access and resume surfaces. |
+| Library | The user's persistent content hub across the platform, including saved, owned, claimed, started, bookmarked, drafted, published, and reusable creative materials. | Use for durable access, resume surfaces, creator work, and reusable assets. StoryQwest and SongQwest may expose specialized Library views over the same underlying platform concept. |
 | Collections | Curated or user-organized groups of Qwests, creators, themes, or media-agnostic platform items. | Use for platform grouping; do not use Discovery Collections for navigation. |
 | Profile | A user or creator identity surface containing public, private, account, and visibility information depending on context. | Qualify as Public Profile, Creator Profile, or Account Profile when ambiguity matters. |
 | Notifications | Platform-level messages, alerts, updates, publishing events, account events, and engagement prompts. | Keep separate from in-Qwest reveal or discovery feedback. |
 | Settings | Account, accessibility, privacy, notification, playback, and experience preferences. | Keep platform settings distinct from runtime-specific reader/listener controls when needed. |
 | Search | A platform capability for finding Qwests, creators, collections, library items, media, and authoring assets. | Qualify as Shared Search, Library Search, Media Search, or Runtime Search when scope matters. |
+
+### Experience Scope
+
+Experiences are broader than individual pages or routes. A single experience may
+span navigation, panels, modals, runtime components, persisted state, creator
+workflows, Qwest mechanics, and supporting platform services.
+
+Examples:
+
+- **Reader** is an Audience experience that may include reading surfaces,
+  choices, reveals, discoveries, journal updates, maps, cast context, progress,
+  settings, and runtime state.
+- **Listener** is an Audience experience that may include audio, lyrics,
+  transport controls, performance timelines, reveals, discoveries, ambience,
+  progress, and accessibility fallbacks.
+- **Story Authoring** is a Creator experience that may include manuscript
+  drafting, structure, branching, validation, preview, publishing, media, and
+  analytics.
+- **Library** is a persistent platform experience that may include stories,
+  songs, drafts, published works, collections, artwork, cover art, audio,
+  manuscripts, media assets, bookmarks, Continue Reading, and Continue
+  Listening.
+- **Cover Art Studio** is a Creator experience that may include visual asset
+  generation, editing, review, reuse, and publishing preparation.
+
+## Platform Experience Architecture
+
+Platform Experience Architecture describes how experience personas relate to
+shared platform experiences. These relationships are conceptual planning
+relationships, not permission roles, security roles, entitlement rules, or
+final navigation labels.
+
+A user may move fluidly between Explorer, Audience, and Creator experiences
+during a single session.
+
+| Platform Experience | Explorer | Audience | Creator |
+| --- | :---: | :---: | :---: |
+| Home | x | x | x |
+| Browse | x |  |  |
+| Library |  | x | x |
+| Reader |  | x |  |
+| Listener |  | x |  |
+| Story Authoring |  |  | x |
+| Song Authoring |  |  | x |
+| Cover Art Studio |  |  | x |
+| Profile | x | x | x |
+| Collections | x | x | x |
+| Search | x | x | x |
+| Notifications |  | x | x |
+| Settings | x | x | x |
+
+Planning notes:
+
+- Explorer relationships emphasize finding, evaluating, and following creative
+  work.
+- Audience relationships emphasize active reading, listening, saving,
+  resuming, and revisiting.
+- Creator relationships emphasize drafting, managing, publishing, measuring,
+  and maintaining creative work.
+- The matrix should not be used to infer authorization. Runtime permissions,
+  entitlements, privacy, and visibility require separate production contracts.
+
+### Library As Persistent Content Hub
+
+Library is the user's persistent content hub across StoryQwest, SongQwest, and
+future Qwest formats. It is broader than a shelf of saved Qwests.
+
+Library may include:
+
+- Stories
+- Songs
+- Drafts
+- Published Works
+- Collections
+- Artwork
+- Cover Art
+- Audio
+- Manuscripts
+- Media Assets
+- Bookmarks
+- Continue Reading
+- Continue Listening
+
+StoryQwest and SongQwest can surface specialized views of Library while still
+sharing the same platform concept. For example, a StoryQwest Library view may
+prioritize manuscripts, reading progress, chapters, and story collections,
+while a SongQwest Library view may prioritize songs, listening progress, audio,
+performances, and playlists.
+
+### Studio Planning
+
+Cover Art Studio is currently documented as a Creator experience. In future
+platform architecture, it may become one area within a broader **Studio**
+experience.
+
+Studio may eventually include:
+
+- Cover Art Studio
+- Asset Library
+- Media Library
+- Publishing
+- Analytics
+- Creator Tools
+
+This is future planning only. It does not rename existing Experience Lab
+terminology, runtime components, routes, navigation, or promotion plans.
 
 ## StoryQwest Vocabulary
 
@@ -118,6 +224,40 @@ When a historical document uses Discover or Discovery for marketplace or library
 navigation, treat that wording as legacy product language. New planning should
 use Browse, Featured, Collections, Search, or Recommendations unless it is
 describing an in-Qwest discovery mechanic.
+
+## Emerging Platform Concepts
+
+Emerging platform concepts are exploratory language and branding ideas. They
+are not approved runtime terms, not current navigation labels, and not Qwest
+mechanics unless later promoted through Experience Lab validation and
+architecture review.
+
+### Paths
+
+**Paths** is a possible future branded platform concept for discovering and
+following creative journeys. The intent is to explore language that feels more
+native to StoryQwest and SongQwest than generic marketplace terminology.
+
+Possible future phrasing:
+
+| Current generic phrasing | Exploratory Path phrasing |
+| --- | --- |
+| Browse Stories | Find your next Path |
+| Recommended for you | Recommended Paths |
+| Featured Collections | Curated Paths |
+
+Paths could eventually encompass recommendations, curated journeys, creator
+spotlights, playlists, themed collections, reading sequences, listening
+sequences, and cross-media experiences.
+
+Guidance:
+
+- Paths are not Qwest mechanics.
+- Paths are not navigation labels today.
+- Paths do not replace Browse, Search, Collections, Library, Reader, Listener,
+  or any runtime component name.
+- Paths remain exploratory until validated through the Experience Lab and
+  accepted by future platform architecture planning.
 
 ## Experience Personas
 

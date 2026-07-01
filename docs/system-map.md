@@ -119,3 +119,7 @@ keeps three terminology layers separate:
 The layers remain separate so platform navigation does not collide with Qwest
 mechanics and runtime architecture does not inherit Experience Lab or product
 navigation terminology accidentally.
+
+Platform Experience Architecture, including the Explorer/Audience/Creator
+planning matrix, Library as the persistent content hub, future Studio planning,
+and exploratory Paths concept, is defined in `docs/product-language.md`.

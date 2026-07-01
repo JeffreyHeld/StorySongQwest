@@ -315,6 +315,12 @@ navigation while Discovery remains an in-Qwest mechanic. New platform navigation
 should prefer Browse, Home, Library, Featured, Collections, Search, or
 Recommendations.
 
+Platform Experience Architecture is defined in `docs/product-language.md`. Use
+that document for the Explorer/Audience/Creator planning matrix, Library as the
+persistent content hub, future Studio planning, and exploratory Paths language.
+Paths is not an approved runtime navigation term unless a future Experience Lab
+validation and architecture decision promotes it.
+
 ## StoryQwest Flow
 
 ```text
