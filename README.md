@@ -9,10 +9,12 @@ Read these documents in order:
 
 1. `docs/architecture-map.md` - canonical workspace routing, ownership, and
    promotion process.
-2. `docs/system-map.md` - compact dependency-flow summary.
-3. `qwest-design-system/README.md` - Experience Lab setup, routes, and prototype
+2. `docs/product-language.md` - canonical platform, runtime, Qwest, reserved
+   terminology, and experience persona vocabulary.
+3. `docs/system-map.md` - compact dependency-flow summary.
+4. `qwest-design-system/README.md` - Experience Lab setup, routes, and prototype
    status.
-4. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
+5. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
    and deployment commands.
 
 ## Workspace Structure
@@ -50,6 +52,8 @@ StorySongQwest/
 `README.md` is only the workspace entry point and short status summary.
 `docs/architecture-map.md` is the canonical source for repository ownership,
 feature routing, promotion states, boundary rules, and documentation governance.
+`docs/product-language.md` is the canonical source for platform, runtime, Qwest,
+reserved terminology, and Explorer/Audience/Creator experience personas.
 Supporting maps, roadmaps, milestones, audits, phase specs, and repo READMEs
 must align with it.
 

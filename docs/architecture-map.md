@@ -42,6 +42,9 @@ System maps, runtime specs, promotion roadmaps, and phase specs
   the right documents, but it does not supersede this architecture map.
 - `docs/architecture-map.md` is canonical for workspace architecture, repository
   ownership, feature routing, and promotion ownership.
+- `docs/product-language.md` is canonical for platform vocabulary, runtime
+  vocabulary, Qwest mechanics, reserved terminology, naming principles, and the
+  Explorer/Audience/Creator experience personas.
 - `docs/system-map.md` is a compact supporting diagram and development-flow
   summary.
 - Runtime specs, phase specs, promotion roadmaps, milestone plans, and promotion
@@ -72,6 +75,8 @@ System maps, runtime specs, promotion roadmaps, and phase specs
 - UI concepts should be proven in the Experience Lab before production runtime
   implementation unless the change is an urgent runtime defect or a purely
   backend/platform concern.
+- Product terminology is governed by `docs/product-language.md`. Architecture
+  docs may reference its terms, but should not redefine them.
 
 ## Master Dependency Graph
 
@@ -236,6 +241,7 @@ Ask these questions in order.
 
 | Feature area               | Primary owner                                          | Required docs                                    | Promotion gate                                                                       |
 | -------------------------- | ------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| Product language and terminology governance | Root `docs/product-language.md` | Architecture map, system map, promotion audit, runtime roadmap | Platform, runtime, and Qwest terminology remain distinct and reserved terms are not reused for navigation. |
 | Canonical content model    | `story-song-qwest/docs`                                | Phase 4 spec, ADR if major                       | Schema impact and migration path are documented first.                               |
 | Runtime state engine       | `story-song-qwest`                                     | Phase 4 spec, runtime roadmap, ADR if major      | Pure engine boundaries and tests exist before UI consumption.                        |
 | Interaction taxonomy       | Shared concept, production-owned in `story-song-qwest` | Phase 4 spec, promotion audit, runtime milestone | StoryQwest and SongQwest variants are documented explicitly.                         |
@@ -254,6 +260,7 @@ Ask these questions in order.
 | Feature area            | Primary owner                                     | Required docs             | Promotion gate                                                              |
 | ----------------------- | ------------------------------------------------- | ------------------------- | --------------------------------------------------------------------------- |
 | Workspace orientation   | Root `README.md`, `docs/system-map.md`, this file | Architecture map          | New maintainers can identify owner and next document in under five minutes. |
+| Product language        | Root `docs/product-language.md`                   | Product language          | Platform, runtime, Qwest, reserved terminology, naming principles, and experience personas have one source of truth. |
 | Phase specs             | `story-song-qwest/docs`                           | Phase 0-7 specs           | Phase docs define intent and constraints before build plans.                |
 | Promotion audit         | `qwest-design-system/docs`                        | Experience Lab audit      | Audit reflects current prototype readiness and gaps.                        |
 | Runtime roadmap         | `story-song-qwest/docs`                           | Runtime promotion roadmap | Roadmap defines stable promotion rules.                                     |
@@ -286,6 +293,27 @@ Use these labels consistently in docs and planning.
 | Level 1: Direct Component Promotion | Stable presentational primitives.                                 | Typography, spacing, simple cards, buttons, static states.              | Runtime component or token with tests and docs.                   |
 | Level 2: Refactored Promotion       | Components with behavior or state boundaries.                     | Reader shell, choice list, media overlay, discovery panel.              | Production-owned component preserving validated UX.               |
 | Level 3: Runtime Reimplementation   | Engines, orchestration, timing, persistence, or platform systems. | Performance timeline, audio runtime, state engine, publishing pipeline. | Architecture design, tests, runtime integration, migration notes. |
+
+## Terminology Governance
+
+Use `docs/product-language.md` as the authoritative vocabulary reference. This
+architecture map governs where work belongs and how it is promoted; the product
+language document governs what shared terms mean.
+
+The workspace intentionally keeps three terminology layers separate:
+
+1. **Platform** terms describe media-agnostic navigation and shared account
+   experiences such as Home, Browse, Library, Search, Collections, Profile,
+   Notifications, and Settings.
+2. **Runtime** terms describe production systems, contracts, engines, state,
+   validation, publishing, deployment, and implementation readiness.
+3. **Qwest** terms describe interactive mechanics inside a Qwest, including
+   Journal, Map, Cast, Reveal, Discovery, Timeline, Branch, and Decision.
+
+This separation prevents collisions such as using Discover for platform
+navigation while Discovery remains an in-Qwest mechanic. New platform navigation
+should prefer Browse, Home, Library, Featured, Collections, Search, or
+Recommendations.
 
 ## StoryQwest Flow
 
@@ -364,6 +392,8 @@ component-level promotion decisions are complete.
   runtime implementation, platform architecture, or release work.
 - Check both repositories before making architectural decisions.
 - Keep prototype code and production runtime code separated.
+- Keep platform vocabulary, runtime vocabulary, and Qwest mechanics distinct by
+  following `docs/product-language.md`.
 - Record promotion readiness in the promotion audit before scheduling runtime
   promotion.
 - Define data contracts before production runtime code depends on them.
