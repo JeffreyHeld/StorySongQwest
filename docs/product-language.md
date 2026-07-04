@@ -25,8 +25,12 @@ Product language is organized into three layers:
   ownership, feature routing, and promotion ownership.
 - `docs/system-map.md` summarizes the Platform, Runtime, and Qwest terminology
   layers in the workspace dependency flow.
+- `qwest-experience-platform/README.md` describes the active Experience Lab,
+  bundle tooling, shared platform models, Bundle Explorer, Bundle Inspector, and
+  foundation work.
 - `qwest-design-system/docs/experience-lab-promotion-audit.md` records
-  Experience Lab planning status and foundational shared experience candidates.
+  historical Experience Lab planning status and foundational shared experience
+  candidates from the legacy prototype repository.
 - `story-song-qwest/docs/songqwest-storyqwest-phase-5-runtime-promotion-roadmap.md`
   governs how validated Experience Lab work becomes production runtime.
 
@@ -35,19 +39,61 @@ Product language is organized into three layers:
 Platform terms describe navigation and durable product surfaces across the
 ecosystem. They should remain media-agnostic whenever practical.
 
-| Term | Definition | Usage guidance |
-| --- | --- | --- |
-| Platform | The shared product ecosystem that includes StoryQwest, SongQwest, creator tooling, audience surfaces, marketplace/community surfaces, and shared account experiences. | Use for cross-product product strategy and shared capabilities. |
-| Runtime | The production implementation that renders Qwests, manages state, validates content, publishes bundles, integrates services, and meets accessibility, testing, performance, and release standards. | Use for production systems, not lab prototypes or product navigation. |
-| Experience | A cohesive way a person interacts with the platform. An experience may include multiple screens, workflows, runtime components, and Qwest mechanics working together toward a single purpose. | Prefer this over rigid account-type or page-level language. Reader, Listener, Story Authoring, Library, and Cover Art Studio are experiences, not just pages. |
-| Home | The primary signed-in landing surface for returning to recent activity and relevant next actions. | Use for account-level orientation, not in-Qwest navigation. |
-| Browse | The platform surface for finding Qwests, creators, collections, and featured content. | Prefer Browse over Discover for navigation because Discovery is reserved Qwest terminology. |
-| Library | The user's persistent content hub across the platform, including saved, owned, claimed, started, bookmarked, drafted, published, and reusable creative materials. | Use for durable access, resume surfaces, creator work, and reusable assets. StoryQwest and SongQwest may expose specialized Library views over the same underlying platform concept. |
-| Collections | Curated or user-organized groups of Qwests, creators, themes, or media-agnostic platform items. | Use for platform grouping; do not use Discovery Collections for navigation. |
-| Profile | A user or creator identity surface containing public, private, account, and visibility information depending on context. | Qualify as Public Profile, Creator Profile, or Account Profile when ambiguity matters. |
-| Notifications | Platform-level messages, alerts, updates, publishing events, account events, and engagement prompts. | Keep separate from in-Qwest reveal or discovery feedback. |
-| Settings | Account, accessibility, privacy, notification, playback, and experience preferences. | Keep platform settings distinct from runtime-specific reader/listener controls when needed. |
-| Search | A platform capability for finding Qwests, creators, collections, library items, media, and authoring assets. | Qualify as Shared Search, Library Search, Media Search, or Runtime Search when scope matters. |
+---
+
+### **Platform & Core Systems**
+
+- **Platform**
+- **Definition:** The shared product ecosystem that includes StoryQwest, SongQwest, creator tooling, audience surfaces, marketplace/community surfaces, and shared account experiences.
+- **Usage Guidance:** Use for cross-product product strategy and shared capabilities.
+
+- **Runtime**
+- **Definition:** The production implementation that renders Qwests, manages state, validates content, publishes bundles, integrates services, and meets accessibility, testing, performance, and release standards.
+- **Usage Guidance:** Use for production systems, not lab prototypes or product navigation.
+
+- **Experience**
+- **Definition:** A cohesive way a person interacts with the platform. An experience may include multiple screens, workflows, runtime components, and Qwest mechanics working together toward a single purpose.
+- **Usage Guidance:** Prefer this over rigid account-type or page-level language. Reader, Listener, Story Authoring, Library, and Cover Art Studio are experiences, not just pages.
+
+---
+
+### **Platform Surfaces & Navigation**
+
+- **Home**
+- **Definition:** The primary signed-in landing surface for returning to recent activity and relevant next actions.
+- **Usage Guidance:** Use for account-level orientation, not in-Qwest navigation.
+
+- **Browse**
+- **Definition:** The platform surface for finding Qwests, creators, collections, and featured content.
+- **Usage Guidance:** Prefer Browse over Discover for navigation because Discovery is reserved Qwest terminology.
+
+- **Library**
+- **Definition:** The user's persistent content hub across the platform, including saved, owned, claimed, started, bookmarked, drafted, published, and reusable creative materials.
+- **Usage Guidance:** Use for durable access, resume surfaces, creator work, and reusable assets. StoryQwest and SongQwest may expose specialized Library views over the same underlying platform concept.
+
+- **Collections**
+- **Definition:** Curated or user-organized groups of Qwests, creators, themes, or media-agnostic platform items.
+- **Usage Guidance:** Use for platform grouping; do not use Discovery Collections for navigation.
+
+---
+
+### **Identity & Utilities**
+
+- **Profile**
+- **Definition:** A user or creator identity surface containing public, private, account, and visibility information depending on context.
+- **Usage Guidance:** Qualify as Public Profile, Creator Profile, or Account Profile when ambiguity matters.
+
+- **Search**
+- **Definition:** A platform capability for finding Qwests, creators, collections, library items, media, and authoring assets.
+- **Usage Guidance:** Qualify as Shared Search, Library Search, Media Search, or Runtime Search when scope matters.
+
+- **Notifications**
+- **Definition:** Platform-level messages, alerts, updates, publishing events, account events, and engagement prompts.
+- **Usage Guidance:** Keep separate from in-Qwest reveal or discovery feedback.
+
+- **Settings**
+- **Definition:** Account, accessibility, privacy, notification, playback, and experience preferences.
+- **Usage Guidance:** Keep platform settings distinct from runtime-specific reader/listener controls when needed.
 
 ### Experience Scope
 
@@ -84,20 +130,20 @@ A user may move fluidly between Explorer, Audience, and Creator experiences
 during a single session.
 
 | Platform Experience | Explorer | Audience | Creator |
-| --- | :---: | :---: | :---: |
-| Home | x | x | x |
-| Browse | x |  |  |
-| Library |  | x | x |
-| Reader |  | x |  |
-| Listener |  | x |  |
-| Story Authoring |  |  | x |
-| Song Authoring |  |  | x |
-| Cover Art Studio |  |  | x |
-| Profile | x | x | x |
-| Collections | x | x | x |
-| Search | x | x | x |
-| Notifications |  | x | x |
-| Settings | x | x | x |
+| ------------------- | -------- | -------- | ------- |
+| Home                | x        | x        | x       |
+| Browse              | x        |          |         |
+| Library             |          | x        | x       |
+| Reader              |          | x        |         |
+| Listener            |          | x        |         |
+| Story Authoring     |          |          | x       |
+| Song Authoring      |          |          | x       |
+| Cover Art Studio    |          |          | x       |
+| Profile             | x        | x        | x       |
+| Collections         | x        | x        | x       |
+| Search              | x        | x        | x       |
+| Notifications       |          | x        | x       |
+| Settings            | x        | x        | x       |
 
 Planning notes:
 
@@ -159,41 +205,41 @@ terminology, runtime components, routes, navigation, or promotion plans.
 
 StoryQwest terms describe story-centered creation and audience experiences.
 
-| Term | Definition | Usage guidance |
-| --- | --- | --- |
-| Reader | A person actively experiencing a StoryQwest, or the runtime surface for reading one when context is clear. | Use Audience when referring to the broader cross-media persona. |
-| Author | A creator writing, structuring, testing, and publishing StoryQwest content. | Use Creator for the broader platform persona. |
-| Manuscript | The authoring source for StoryQwest content before it becomes a published Qwest bundle. | Use for draft/story source material, not runtime output. |
-| Chapter | A story-scale organizational unit inside a StoryQwest manuscript or reader experience. | Use when story structure is chapter-based; do not require every Qwest to use chapters. |
+| Term       | Definition                                                                                                 | Usage guidance                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Reader     | A person actively experiencing a StoryQwest, or the runtime surface for reading one when context is clear. | Use Audience when referring to the broader cross-media persona.                        |
+| Author     | A creator writing, structuring, testing, and publishing StoryQwest content.                                | Use Creator for the broader platform persona.                                          |
+| Manuscript | The authoring source for StoryQwest content before it becomes a published Qwest bundle.                    | Use for draft/story source material, not runtime output.                               |
+| Chapter    | A story-scale organizational unit inside a StoryQwest manuscript or reader experience.                     | Use when story structure is chapter-based; do not require every Qwest to use chapters. |
 
 ## SongQwest Vocabulary
 
 SongQwest terms describe song-centered creation and audience experiences.
 
-| Term | Definition | Usage guidance |
-| --- | --- | --- |
-| Listener | A person actively experiencing a SongQwest, or the runtime surface for listening when context is clear. | Use Audience when referring to the broader cross-media persona. |
-| Songwriter | A creator composing or structuring song-centered content. | Use when the creative role is specifically songwriting. |
-| Artist | A performer, recording artist, or public creative identity attached to SongQwest content. | Do not use as a generic replacement for Creator when the work may be literary. |
-| Performance | The timed SongQwest experience of audio, lyrics, media, ambience, branches, discoveries, and interaction lanes. | Use for listener/runtime experience, not platform browsing. |
-| Playlist | An ordered collection of songs, performances, or SongQwest experiences. | Use only when ordering and playback sequence matter. |
+| Term        | Definition                                                                                                      | Usage guidance                                                                 |
+| ----------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Listener    | A person actively experiencing a SongQwest, or the runtime surface for listening when context is clear.         | Use Audience when referring to the broader cross-media persona.                |
+| Songwriter  | A creator composing or structuring song-centered content.                                                       | Use when the creative role is specifically songwriting.                        |
+| Artist      | A performer, recording artist, or public creative identity attached to SongQwest content.                       | Do not use as a generic replacement for Creator when the work may be literary. |
+| Performance | The timed SongQwest experience of audio, lyrics, media, ambience, branches, discoveries, and interaction lanes. | Use for listener/runtime experience, not platform browsing.                    |
+| Playlist    | An ordered collection of songs, performances, or SongQwest experiences.                                         | Use only when ordering and playback sequence matter.                           |
 
 ## Shared Qwest Vocabulary
 
 Shared Qwest terms describe mechanics that can exist inside every Qwest
 regardless of media type.
 
-| Term | Definition | Usage guidance |
-| --- | --- | --- |
-| Qwest | A published interactive creative work that can include story, song, media, state, branches, decisions, reveals, discoveries, journal entries, map context, cast context, and progression. | Reserved as the core content unit across the platform. |
-| Journal | The in-Qwest record of meaningful discovered, unlocked, remembered, or creator-authored context. | Reserved for Qwest mechanics; do not use for platform blog or activity feed without qualification. |
-| Map | A Qwest-level representation of places, paths, journey structure, or progression geography. | Qualify as Journey Map, World Map, or Song Journey Map when useful. |
-| Cast | The Qwest-level set of characters, performers, identities, or entities relevant to the experience. | Reserved for in-Qwest participants, not account teams or app staff. |
-| Reveal | An interaction that exposes hidden, staged, or additional content inside a Qwest. | Reserved for Qwest mechanics. |
-| Discovery | An interactive Qwest content item, clue, secret, lore item, media unlock, collectible, or meaningful optional find. | Reserved for Qwest mechanics; do not use Discover/Discovery as top-level platform navigation. |
-| Timeline | A structured sequence of Qwest state, memory, performance, progression, or timed events. | Qualify as Reader Memory Timeline, Performance Timeline, or Runtime Timeline when scope matters. |
-| Branch | A Qwest path split, conditional route, alternate path, or graph edge that changes progression. | Use for content graph structure, not source-control branches unless explicitly in engineering context. |
-| Decision | A user choice or authored condition that affects Qwest progression, state, or experience. | Use Choice for the UI affordance when needed; use Decision for the meaningful outcome. |
+| Term      | Definition                                                                                                                                                                                | Usage guidance                                                                                         |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Qwest     | A published interactive creative work that can include story, song, media, state, branches, decisions, reveals, discoveries, journal entries, map context, cast context, and progression. | Reserved as the core content unit across the platform.                                                 |
+| Journal   | The in-Qwest record of meaningful discovered, unlocked, remembered, or creator-authored context.                                                                                          | Reserved for Qwest mechanics; do not use for platform blog or activity feed without qualification.     |
+| Map       | A Qwest-level representation of places, paths, journey structure, or progression geography.                                                                                               | Qualify as Journey Map, World Map, or Song Journey Map when useful.                                    |
+| Cast      | The Qwest-level set of characters, performers, identities, or entities relevant to the experience.                                                                                        | Reserved for in-Qwest participants, not account teams or app staff.                                    |
+| Reveal    | An interaction that exposes hidden, staged, or additional content inside a Qwest.                                                                                                         | Reserved for Qwest mechanics.                                                                          |
+| Discovery | An interactive Qwest content item, clue, secret, lore item, media unlock, collectible, or meaningful optional find.                                                                       | Reserved for Qwest mechanics; do not use Discover/Discovery as top-level platform navigation.          |
+| Timeline  | A structured sequence of Qwest state, memory, performance, progression, or timed events.                                                                                                  | Qualify as Reader Memory Timeline, Performance Timeline, or Runtime Timeline when scope matters.       |
+| Branch    | A Qwest path split, conditional route, alternate path, or graph edge that changes progression.                                                                                            | Use for content graph structure, not source-control branches unless explicitly in engineering context. |
+| Decision  | A user choice or authored condition that affects Qwest progression, state, or experience.                                                                                                 | Use Choice for the UI affordance when needed; use Decision for the meaningful outcome.                 |
 
 ## Reserved Terms
 
@@ -241,10 +287,10 @@ native to StoryQwest and SongQwest than generic marketplace terminology.
 Possible future phrasing:
 
 | Current generic phrasing | Exploratory Path phrasing |
-| --- | --- |
-| Browse Stories | Find your next Path |
-| Recommended for you | Recommended Paths |
-| Featured Collections | Curated Paths |
+| ------------------------ | ------------------------- |
+| Browse Stories           | Find your next Path       |
+| Recommended for you      | Recommended Paths         |
+| Featured Collections     | Curated Paths             |
 
 Paths could eventually encompass recommendations, curated journeys, creator
 spotlights, playlists, themed collections, reading sequences, listening
