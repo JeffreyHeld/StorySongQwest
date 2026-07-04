@@ -13,10 +13,12 @@ Testing/
 # Never track nested repositories
 qwest-design-system/.git
 story-song-qwest/.git
+qwest-experience-platform/.git
 
 # Child repositories
 /qwest-design-system/
 /story-song-qwest/
+/qwest-experience-platform/
 
 # Local testing
 /Testing/

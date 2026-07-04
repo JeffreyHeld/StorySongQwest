@@ -18,7 +18,7 @@ Phase Specs
 Phase 0-7 product and platform intent
             |
             v
-qwest-design-system
+qwest-experience-platform
 Experience Lab
             |
             v
@@ -58,8 +58,15 @@ prototype disposition complete
 1. **Phase Specs**
    - Phase 0–7 product and platform intent
 
-2. **qwest-design-system**
-   - Experience Lab
+2. **qwest-experience-platform**
+   - Active Experience Lab
+   - Bundle tooling
+   - Shared platform models
+   - Bundle Explorer and Bundle Inspector
+   - Foundation Themes
+
+Legacy `qwest-design-system` prototypes remain historical Experience Lab
+evidence and reference material while migration proceeds.
 
 3. **Static Evidence**
    - Reader

@@ -8,10 +8,11 @@ contract, or runtime implementation complete.
 ## Scope
 
 These standards apply to production runtime work in `story-song-qwest` and to
-promotion decisions that move evidence from `qwest-design-system` toward
-runtime implementation. Lab-only prototypes may reference these standards, but
-they are not considered production-ready until the relevant runtime milestone
-verifies them.
+promotion decisions that move evidence from `qwest-experience-platform` toward
+runtime implementation. Historical prototypes in `qwest-design-system` may
+inform promotion decisions as reference evidence, but active Experience Lab work
+now belongs in `qwest-experience-platform`. Lab-only prototypes are not
+considered production-ready until the relevant runtime milestone verifies them.
 
 ## Performance
 
@@ -49,7 +50,7 @@ verifies them.
 ## Security
 
 - Keep Firebase, Cloudflare, auth, persistence, secrets, and production state
-  logic out of `qwest-design-system`.
+  logic out of the active Experience Lab and legacy prototype repositories.
 - Document schema, security rule, storage layout, function, Worker binding, and
   environment-variable changes before implementation.
 - Never commit secrets. Runtime secrets belong in the deployment platform's
