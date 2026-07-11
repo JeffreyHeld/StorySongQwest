@@ -19,6 +19,69 @@ Product language is organized into three layers:
 - **Qwest:** Interactive content mechanics that exist inside StoryQwest,
   SongQwest, and future Qwest media forms.
 
+## Canonical SongQwest Creator Workflow
+
+SongQwest is not a digital audio workstation. Artists record, edit, mix, master,
+and otherwise produce music in professional tools outside SongQwest. Creator
+Studio begins after the music is complete and references imported audio assets;
+it does not modify their waveforms, stems, or mixes.
+
+The canonical workflow is:
+
+1. Produce music outside SongQwest.
+2. Import finalized MP3, WAV, FLAC, AAC, or other common release-ready audio.
+3. Organize imported songs into StoryQwest-style scenes or sections.
+4. Attach lyrics to each scene.
+5. Enrich lyrics and scenes with applicable media moments, reveals,
+   discoveries, journal entries, lore, cast references, locations, maps, inline
+   interactions, collectibles, achievements, companions, and environmental
+   storytelling.
+6. Add optional branches containing alternate finished songs, completed spoken
+   narration or dialogue, narrated choices, or alternate story paths.
+7. Continue building scenes and branches until the experience is complete.
+8. Polish with existing runtime systems such as ambience, environments, maps,
+   companions, collectibles, progression, discoveries, runtime behaviors, and
+   presentation.
+9. Preview the production runtime, validate publish readiness, and publish the
+   completed interactive SongQwest.
+
+```text
+Professional Music Tools
+          |
+          v
+Finished Song
+(MP3 | WAV | FLAC | AAC)
+          |
+          v
+Import into SongQwest
+          |
+          v
+Scenes / Sections
+          |
+          v
+Lyrics
+          |
+          v
+Interactive Enrichment
+          |
+          v
+Branches
+          |
+          v
+Preview
+          |
+          v
+Publish
+```
+
+Use **audio assets**, **imported songs**, **finalized recordings**,
+**release-ready music**, **scenes**, **sections**, **lyrics**, **interactive
+content**, **enrichment**, **preview**, and **publish** for this workflow.
+Recording, waveform or audio-timeline editing, stem editing, alternate mixes,
+adaptive music production, MIDI editing, mixing, mastering, and live-performance
+production are outside the canonical workflow, including the Public Beta
+baseline. Any future exploration of those capabilities is optional.
+
 ## Related Documents
 
 - `docs/architecture-map.md` governs workspace architecture, repository
@@ -146,6 +209,13 @@ during a single session.
 | Settings            | x        | x        | x       |
 
 Planning notes:
+
+- **Song Authoring** is retained as an existing planning label in this
+  document. It means authoring an interactive SongQwest experience around
+  imported, finalized music—not authoring or producing the music itself.
+- A future terminology review may consider **Song Experience Authoring**,
+  **SongQwest Authoring**, or **Interactive Song Authoring**. That naming review
+  must not change architecture or roadmap scope.
 
 - Explorer relationships emphasize finding, evaluating, and following creative
   work.

@@ -32,6 +32,12 @@ StorySongQwest/
 
 ## Current Status
 
+SongQwest is an import-first interactive storytelling product, not a DAW.
+Artists produce music outside SongQwest, then Creator Studio imports finalized
+audio, organizes scenes and sections, attaches lyrics and interactive content,
+adds optional branches, previews and validates the production runtime, and
+publishes. See `docs/product-language.md` for the canonical workflow.
+
 - Current phase: Phase 5 - Runtime Promotion and Product Readiness.
 - `qwest-experience-platform`: active Experience Lab and platform foundation.
 - `qwest-design-system`: legacy UI prototype repository and historical
