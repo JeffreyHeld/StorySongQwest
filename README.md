@@ -11,12 +11,14 @@ Read these documents in order:
    promotion process.
 2. `docs/product-language.md` - canonical platform, runtime, Qwest, reserved
    terminology, and experience persona vocabulary.
-3. `docs/system-map.md` - compact dependency-flow summary.
-4. `qwest-experience-platform/README.md` - active Experience Lab setup, bundle
-   tooling, Bundle Explorer, Bundle Inspector, and foundation work.
-5. `qwest-design-system/README.md` - legacy prototype reference and historical
+3. `docs/documentation-taxonomy.md` - canonical, status, and historical-evidence
+   document roles.
+4. `docs/system-map.md` - compact dependency-flow summary.
+5. `qwest-experience-platform/README.md` - active Experience Lab and Platform
+   setup, bundle tooling, Bundle Explorer, Bundle Inspector, and foundation work.
+6. `qwest-design-system/README.md` - legacy prototype reference and historical
    Experience Lab status.
-6. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
+7. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
    and deployment commands.
 
 ## Workspace Structure
@@ -38,27 +40,32 @@ audio, organizes scenes and sections, attaches lyrics and interactive content,
 adds optional branches, previews and validates the production runtime, and
 publishes. See `docs/product-language.md` for the canonical workflow.
 
-- Current phase: Phase 5 - Runtime Promotion and Product Readiness.
-- `qwest-experience-platform`: active Experience Lab and platform foundation.
+- Experience Platform Phase 6 production runtime integration architecture is
+  complete within its bounded 6A-6H ownership scope. Phase 7 shared Platform
+  services is the next planned Platform phase.
+- Runtime milestone M5.5 Launch Readiness is Testing. M5.6 Public Beta,
+  deployment validation, physical-device QA, assistive-technology certification,
+  and production launch remain incomplete.
+- `qwest-experience-platform`: active Experience Lab, Runtime Host, registration,
+  compatibility, identity/persistence boundaries, runtime evidence, media/offline
+  policy, and accessibility-responsibility integration.
 - `qwest-design-system`: legacy UI prototype repository and historical
   Experience Lab reference.
 - `story-song-qwest`: active production runtime development.
-- StoryQwest reader prototypes and shared interaction patterns are the strongest
-  promotion candidates.
-- SongQwest has static historical Experience Lab evidence in the legacy
-  `qwest-design-system` `/listener` and `/labs/song-authoring` areas, but
-  validation is pending. SongQwest runtime promotion remains blocked until
-  accessibility review, audio abstraction, mixer contracts, timeline contracts,
-  and promotion decisions are complete.
+- StoryQwest and SongQwest production runtimes expose runtime-owned host adapters
+  consumed by the Experience Platform through one generic provider/host boundary.
+- Legacy SongQwest listener, timeline, mixer, fader, and stem concepts remain
+  historical evidence only. The canonical Creator workflow imports finalized
+  audio and does not add DAW or music-production scope.
 
 ## Repository Roles
 
 | Repository | Role |
 | --- | --- |
 | Root workspace/docs repo | Own workspace-level architecture, feature routing, system maps, engineering standards, and workspace-wide ADRs. |
-| `qwest-experience-platform` | Own the active Experience Lab, platform foundation work, bundle tooling, shared platform models, Bundle Explorer, Bundle Inspector, Foundation Themes, and future platform experiments. |
+| `qwest-experience-platform` | Own the active Experience Lab plus Platform hosting, registration, lifecycle, compatibility, authentication and persistence boundaries, shared-service architecture, media availability/download policy, and shell accessibility. |
 | `qwest-design-system` | Preserve legacy UI prototypes, historical Experience Lab work, reference implementations, and archived experiments. |
-| `story-song-qwest` | Own production runtime logic, canonical data contracts, Firebase, Cloudflare, publishing, tests, deployment, and runtime documentation. |
+| `story-song-qwest` | Own StoryQwest/SongQwest rendering, runtime behavior and state, runtime progress persistence, runtime media behavior, runtime accessibility, canonical content/publishing, Firebase-backed protected operations, Cloudflare deployment, tests, and runtime documentation. |
 
 ## Documentation Authority
 
@@ -67,6 +74,10 @@ publishes. See `docs/product-language.md` for the canonical workflow.
 feature routing, promotion states, boundary rules, and documentation governance.
 `docs/product-language.md` is the canonical source for platform, runtime, Qwest,
 reserved terminology, and Explorer/Audience/Creator experience personas.
+`docs/documentation-taxonomy.md` defines which documents are canonical, current
+status, or historical evidence.
+[ADR-0005](docs/decisions/ADR-0005-phase-6-platform-runtime-ownership.md)
+records the implemented Experience Platform/runtime ownership split.
 Supporting maps, roadmaps, milestones, audits, phase specs, and repo READMEs
 must align with it.
 

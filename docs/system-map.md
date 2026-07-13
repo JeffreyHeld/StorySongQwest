@@ -1,5 +1,9 @@
 # System Map - Supporting Dependency Graph
 
+> **Documentation class: Canonical.** This is the compact view of long-lived
+> workspace relationships, not a milestone-status ledger. See
+> [Documentation Taxonomy](documentation-taxonomy.md).
+
 This document is a compact supporting diagram for the StorySongQwest workspace.
 It is subordinate to `docs/architecture-map.md`, which is the canonical source
 for workspace architecture, repository ownership, feature routing, and promotion
@@ -14,43 +18,27 @@ document conflicts with `docs/architecture-map.md`, update this document or
 revise the architecture map first.
 
 ```text
-Phase Specs
-Phase 0-7 product and platform intent
+Product intent and canonical contracts
             |
             v
 qwest-experience-platform
-Experience Lab
+Experience Lab + Platform boundaries
             |
             v
-Static Evidence
-reader, listener, authoring,
-gallery, SongQwest listener/timeline
+Promotion and integration evidence
             |
             v
-Validation / Contracts
-UX review, accessibility review,
-audio abstraction, mixer contracts,
-timeline contracts, data contracts
+story-song-qwest production runtimes
+StoryQwest Reader + SongQwest Listener
             |
             v
-Promotion Candidate
-validated evidence with explicit
-promotion level and blockers resolved
+Runtime-owned host adapters
             |
             v
-Runtime Planned
-runtime milestone, acceptance criteria,
-verification, prototype disposition
-            |
-            v
-story-song-qwest Runtime
-production implementation with state,
-tests, accessibility, deployment docs
-            |
-            v
-Integrated
-production runtime, docs, tests, and
-prototype disposition complete
+Experience Platform Runtime Host
+registration, lifecycle, identity and
+persistence boundaries, media policy,
+accessibility handoff
 ```
 
 ## Development Flow
@@ -78,9 +66,7 @@ evidence and reference material while migration proceeds.
 4. **Validation / Contracts**
    - UX review
    - Accessibility review
-   - Audio abstraction
-   - Mixer contracts
-   - Timeline contracts
+   - Runtime and adapter contracts
    - Data contracts
 
 5. **Promotion Candidate**
@@ -95,7 +81,7 @@ evidence and reference material while migration proceeds.
 
 7. **Production Runtime**
    - StoryQwest runtime
-   - SongQwest runtime only after validation/contracts
+   - SongQwest runtime
 
 8. **Integrated**
    - Runtime implementation complete
@@ -107,7 +93,7 @@ evidence and reference material while migration proceeds.
 
 10. **Reader / Listener Runtime**
     - StoryQwest reader experience
-    - SongQwest listener experience only after integration
+    - SongQwest listener experience
 
 ## Terminology Layers
 

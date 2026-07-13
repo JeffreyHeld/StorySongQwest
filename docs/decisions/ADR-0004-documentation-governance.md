@@ -73,3 +73,8 @@ ADRs live in `docs/decisions/` at the workspace root for workspace-level decisio
 - System maps, runtime specs, promotion roadmaps, phase specs, milestones, audits, and repository READMEs must align with the architecture map.
 - Historical decisions should be superseded by new ADRs rather than deleted.
 
+## Current Taxonomy
+
+The [Documentation Taxonomy](../documentation-taxonomy.md) extends this authority
+hierarchy by distinguishing Canonical, Status, and Historical Evidence
+documents. It does not supersede this ADR.

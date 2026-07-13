@@ -1,5 +1,10 @@
 # Product Language
 
+> **Documentation class: Canonical.** This document governs long-lived product
+> vocabulary. Current phase status belongs in roadmaps and readiness documents;
+> dated terminology decisions belong in historical evidence. See
+> [Documentation Taxonomy](documentation-taxonomy.md).
+
 ## Product Language Overview
 
 This document is the canonical vocabulary reference for StoryQwest, SongQwest,
@@ -107,11 +112,11 @@ ecosystem. They should remain media-agnostic whenever practical.
 ### **Platform & Core Systems**
 
 - **Platform**
-- **Definition:** The shared product ecosystem that includes StoryQwest, SongQwest, creator tooling, audience surfaces, marketplace/community surfaces, and shared account experiences.
+- **Definition:** The shared product ecosystem and application boundary that includes StoryQwest, SongQwest, creator tooling, audience surfaces, hosting, registration, lifecycle, shared services, marketplace/community surfaces, and shared account experiences.
 - **Usage Guidance:** Use for cross-product product strategy and shared capabilities.
 
 - **Runtime**
-- **Definition:** The production implementation that renders Qwests, manages state, validates content, publishes bundles, integrates services, and meets accessibility, testing, performance, and release standards.
+- **Definition:** The production implementation that renders Qwests and owns runtime behavior, runtime state, runtime progress, runtime media, runtime accessibility, validation, publishing, teardown, testing, performance, and runtime release evidence. It does not name the surrounding shared Platform services.
 - **Usage Guidance:** Use for production systems, not lab prototypes or product navigation.
 
 - **Experience**

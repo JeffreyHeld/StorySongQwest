@@ -73,3 +73,9 @@ Promotion levels are:
 - SongQwest runtime promotion remains blocked until listener/timeline evidence is validated and mapped to runtime contracts.
 - Prototype disposition must be recorded as promoted, superseded, archived, or retained for further exploration.
 
+## Later Decisions
+
+[ADR-0005](ADR-0005-phase-6-platform-runtime-ownership.md) preserves the
+promotion model and records that the dated SongQwest promotion blocker in the
+consequences above was subsequently resolved by the production Listener and
+runtime-host adapter work.

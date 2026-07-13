@@ -1,5 +1,10 @@
 # Architecture Map: Feature Ownership And Promotion
 
+> **Documentation class: Canonical.** This document contains long-lived workspace
+> ownership and routing rules. Current milestone and release state belongs in
+> status documents; dated implementation results belong in historical evidence.
+> See [Documentation Taxonomy](documentation-taxonomy.md).
+
 ## Objective
 
 This document is the canonical workspace architecture and feature ownership map
@@ -60,12 +65,14 @@ System maps, runtime specs, promotion roadmaps, and phase specs
 
 - The workspace contains active runtime and platform repositories plus a legacy
   prototype repository:
-  - `qwest-experience-platform`: the active Experience Lab and platform
-    foundation for bundle tooling, shared platform models, Bundle Explorer,
-    Bundle Inspector, Foundation Themes, and future platform experiments.
+  - `qwest-experience-platform`: the active Experience Lab and Platform
+    implementation for bundle tooling, hosting, registration, lifecycle,
+    compatibility, identity/persistence boundaries, runtime evidence,
+    media/offline policy, accessibility responsibility, and shared-service
+    architecture.
   - `story-song-qwest`: the production runtime, authoring runtime, publishing
-    pipeline, Firebase integration, Cloudflare integration, tests, and platform
-    architecture docs.
+    pipeline, Firebase-backed protected operations and runtime progress,
+    Cloudflare integration, runtime tests, and runtime documentation.
   - `qwest-design-system`: the legacy UI prototype repository containing
     historical Experience Lab work, reference implementations, and archived
     experiments.
@@ -139,16 +146,17 @@ Reader / Listener Runtime
 | New UI prototype                           | `qwest-experience-platform`                                                       | UX needs to be explored without production risk.                                                                          |
 | New visual direction                       | `qwest-experience-platform`                                                       | Design language, motion, typography, and layout should be validated in the Experience Lab first.                          |
 | New reader interaction concept             | `qwest-experience-platform` first                                                 | Reader behavior needs a prototype before promotion into production.                                                       |
-| New listener or SongQwest timeline concept | `qwest-experience-platform` first                                                 | SongQwest timing, lyric, audio, and lane behavior needs a dedicated listener/timeline prototype before runtime promotion. |
+| New listener or SongQwest interaction concept | `qwest-experience-platform` first                                              | New audience-facing behavior should be validated without turning historical timeline or DAW concepts into product scope. |
 | New authoring workflow                     | `qwest-experience-platform` first                                                 | Creator workflow should be proven as an authoring prototype before production integration.                                |
 | New runtime component                      | `story-song-qwest`                                                                | Production components own state integration, error handling, accessibility, tests, and app boundaries.                    |
 | New runtime engine                         | `story-song-qwest`                                                                | Engines are production architecture, not lab scaffolding.                                                                 |
-| New Firebase behavior                      | `story-song-qwest`                                                                | Data persistence, auth, storage, security rules, and functions are production concerns.                                   |
+| Platform authentication or persistence boundary | `qwest-experience-platform`                                                  | Platform identity presentation, launch gating, teardown coordination, summaries, and ownership policy are Platform concerns. |
+| Runtime Firebase or progress behavior      | `story-song-qwest`                                                                | Runtime authorization, protected operations, progress persistence, security rules, storage, and Functions remain runtime concerns. |
 | New Cloudflare behavior                    | `story-song-qwest`                                                                | Worker runtime, deployment, variables, bindings, and edge behavior are production concerns.                               |
 | Publishing or bundle export change         | `story-song-qwest`                                                                | Bundles are production artifacts emitted by the runtime/publishing pipeline.                                              |
 | Bundle fixture for visual QA               | `qwest-experience-platform` or exported from `story-song-qwest`                   | Lab fixtures validate presentation; production owns canonical export. Historical fixtures may remain in `qwest-design-system/public/bundles`. |
 | Canonical content model change             | `story-song-qwest/docs` first, then runtime                                       | Schema and runtime architecture require explicit documentation before implementation.                                     |
-| Platform architecture decision             | `story-song-qwest/docs`                                                           | Architecture decisions govern production behavior and should be documented near the runtime specs.                        |
+| Platform architecture decision             | `qwest-experience-platform/docs` and workspace ADRs                               | Platform ownership belongs with the Platform; cross-workspace decisions are recorded at the root.                         |
 | Promotion readiness assessment             | `qwest-experience-platform/docs`                                                  | Active audits record what the lab has proven and what remains missing. Historical audits remain in `qwest-design-system/docs`. |
 | Promotion process rule                     | `story-song-qwest/docs/songqwest-storyqwest-phase-5-runtime-promotion-roadmap.md` | The roadmap defines how prototypes become runtime.                                                                        |
 | Execution sequencing                       | `story-song-qwest/docs/songqwest-storyqwest-phase-5-runtime-milestones.md`        | Milestones define order, dependencies, acceptance criteria, and verification.                                             |
@@ -175,9 +183,12 @@ Ask these questions in order.
      promotion.
    - No: keep it in the lab or mark it missing/blocked.
 
-5. **Does the work require production state, persistence, security, publishing,
-   deployment, or runtime tests?**
-   - Yes: implement in `story-song-qwest`.
+5. **Does the work require production runtime state, protected data behavior,
+   publishing, deployment, or runtime tests?**
+   - Yes: implement the runtime-owned part in `story-song-qwest`.
+   - If it defines Platform identity, hosting, registration, shared-service, or
+     persistence policy, implement the Platform-owned part in
+     `qwest-experience-platform`.
    - No: keep it in `qwest-experience-platform` as lab work, or in
      `qwest-design-system` only when preserving historical reference material.
 
@@ -196,7 +207,7 @@ Ask these questions in order.
 | Typography scale             | `qwest-experience-platform` first                    | Promotion audit                  | Reader/listener typography validated across desktop/mobile and accessibility modes.                     |
 | Theme exploration            | `qwest-experience-platform`                          | Promotion audit                  | Foundation Themes are stable, documented, and not tied to lab-only layout styles.                       |
 | Reader shell prototype       | `qwest-experience-platform`                          | Promotion audit                  | Validated reader shell can be promoted without importing lab routes.                                    |
-| Listener shell prototype     | `qwest-experience-platform`                          | Promotion audit                  | Static legacy SongQwest listener evidence exists in `qwest-design-system`; validation and contract review gate promotion. |
+| Listener shell prototype     | `qwest-experience-platform`                          | Promotion audit                  | New Listener concepts are lab candidates; the production Listener and hosted adapter already exist in `story-song-qwest`. |
 | Component gallery            | `qwest-experience-platform`                          | Promotion audit                  | Examples identify canonical variants and lab-only variants.                                             |
 | Visual regression fixtures   | `qwest-experience-platform`                          | Promotion audit                  | Fixture bundles cover reader, listener, media, reveal, discovery, choice, ambient, and timeline states. |
 | Responsive layout prototypes | `qwest-experience-platform`                          | Promotion audit                  | Mobile, tablet, desktop, and ultra-wide states are validated before production.                         |
@@ -220,28 +231,28 @@ Ask these questions in order.
 
 | Feature area                 | Primary owner                                        | Required docs                                                | Promotion gate                                                                                                          |
 | ---------------------------- | ---------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| SongQwest listener prototype | `qwest-experience-platform`                          | Promotion audit                                              | Static legacy evidence exists in `qwest-design-system`; validation, accessibility review, and promotion-level decisions remain required. |
+| SongQwest listener runtime   | `story-song-qwest`                                   | Runtime milestone, host-adapter record                       | Production Listener behavior, progress, media, accessibility, failure, and teardown remain runtime-owned. |
 | Historical performance-timeline lanes | `qwest-experience-platform` first, then `story-song-qwest` | SongQwest authoring spec, promotion audit, runtime milestone | Static legacy evidence may inform listener presentation and scene/section layout. It does not authorize waveform, timeline-audio, stem, or mix editing in Creator Studio. |
 | Lyric presentation           | `qwest-experience-platform` first, then `story-song-qwest` | Promotion audit, runtime milestone                           | Active lyric, context, timing fallback, and accessibility behavior require fixture and accessibility validation before promotion. |
-| Audio controls               | `qwest-experience-platform` first, then `story-song-qwest` | Promotion audit, runtime milestone                           | Static controls are evidence only; runtime promotion is blocked until the audio abstraction, autoplay handling, seek model, and accessibility review are complete. |
-| Ambient mixer                | `story-song-qwest` after lab validation              | Runtime roadmap, runtime milestone                           | Runtime promotion is blocked until mixer contracts, audio-layer health, and metadata ownership are defined. |
+| Audio controls               | `story-song-qwest`; new concepts may start in the Lab | Runtime milestone, launch-readiness evidence                 | Production controls exist; broader device, interruption, Media Session, and release certification remain release gates. |
+| Historical ambient-mixer concept | `qwest-design-system` reference only             | Historical prototype record                                  | Not part of the canonical import-first workflow and not a runtime-promotion or Public Beta dependency. |
 | Historical stem-crossfade concept | No current canonical owner; optional future work | Architecture docs, future decision record | Outside the canonical import-first workflow. Any future exploration requires an explicit decision and must not become a Public Beta dependency. |
 | Historical VU-meter/fader concept | `qwest-experience-platform` reference only | Promotion audit | Legacy diagnostic evidence only; it does not establish Creator Studio mixing controls or music-production scope. |
-| Performance log              | `story-song-qwest` after diagnostic design           | Runtime milestone                                            | Diagnostic event and mixer contracts must exist before UI display. |
+| Runtime diagnostics          | `story-song-qwest`; bounded Platform evidence in `qwest-experience-platform` | Runtime milestone, Phase 6E evidence | Diagnostics must preserve privacy and ownership; no mixer contract is implied. |
 | Song Journey Map             | `qwest-experience-platform` first, then `story-song-qwest` | Phase 4 spec, Phase 5 spec, runtime milestone                | Generated from canonical graph/progression model and does not assume next/previous track navigation.                    |
 
 ### Creator Studio And Authoring
 
 | Feature area                   | Primary owner                                        | Required docs                                     | Promotion gate                                                                |
 | ------------------------------ | ---------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------- |
-| StoryQwest authoring workflow  | `qwest-experience-platform` first                    | StoryQwest authoring design spec, promotion audit | Prototype covers write, structure, branch, enhance, polish, test, publish.    |
-| SongQwest authoring workflow   | `qwest-experience-platform` first                    | SongQwest authoring design spec, promotion audit  | Canonical workflow imports finished audio, organizes scenes/sections, attaches lyrics, enriches narrative, branches, previews, validates, and publishes. Static legacy timeline/lane evidence must not imply DAW scope. |
-| Manuscript workspace           | `qwest-experience-platform` first, then `story-song-qwest` | Authoring design spec, runtime milestone          | Writing surface and structural editing behavior are validated.                |
-| Scene/section authoring workspace | `qwest-experience-platform` first, then `story-song-qwest` | SongQwest design spec, runtime milestone | Organizes imported songs, lyrics, enrichment, and branches. Static legacy timeline evidence may inform layout only; waveform/audio editing remains outside SongQwest. |
+| StoryQwest authoring workflow  | `story-song-qwest`; new UX concepts may start in the Lab | Creator Studio runtime doc, promotion audit | Production Creator Studio owns the canonical workflow; new concepts retain the promotion path. |
+| SongQwest authoring workflow   | `story-song-qwest`; new UX concepts may start in the Lab | Creator Studio runtime doc, promotion audit | Production workflow imports finished audio, organizes scenes/sections, attaches lyrics, enriches narrative, branches, previews, validates, and publishes. Static legacy timeline/lane evidence must not imply DAW scope. |
+| Manuscript workspace           | `story-song-qwest`; new UX concepts may start in the Lab | Authoring design spec, runtime milestone          | Production editing, state, validation, and recovery remain Creator Studio-owned. |
+| Scene/section authoring workspace | `story-song-qwest`; new UX concepts may start in the Lab | SongQwest design spec, runtime milestone | Organizes imported songs, lyrics, enrichment, and branches. Waveform/audio editing remains outside SongQwest. |
 | Target selector                | `qwest-experience-platform` first                    | Promotion audit                                   | Real component exists beyond lab placeholder before production integration.   |
 | Interaction command palette    | `qwest-experience-platform` first                    | Promotion audit                                   | Command language maps to canonical interaction taxonomy.                      |
 | Script containers              | `qwest-experience-platform` first                    | Phase 4 spec, authoring design spec               | Data/schema contract exists before runtime implementation.                    |
-| Preview sandbox                | `qwest-experience-platform` first, then `story-song-qwest` | Runtime milestone                                 | Production preview loads the same runtime package used by consumers.          |
+| Preview sandbox                | `story-song-qwest`; new UX concepts may start in the Lab | Runtime milestone                                 | Production preview uses production Reader/Listener behavior with isolated creator state. |
 | Validation overlay             | `story-song-qwest`                                   | Runtime milestone                                 | Validation rules are production-owned and performance-safe.                   |
 | Publish readiness checklist    | `story-song-qwest`                                   | Runtime milestone, launch docs                    | Checklist maps to bundle validation, assets, paths, and deployment readiness. |
 
@@ -250,6 +261,10 @@ Ask these questions in order.
 | Feature area               | Primary owner                                          | Required docs                                    | Promotion gate                                                                       |
 | -------------------------- | ------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | Product language and terminology governance | Root `docs/product-language.md` | Architecture map, system map, promotion audit, runtime roadmap | Platform, runtime, and Qwest terminology remain distinct and reserved terms are not reused for navigation. |
+| Runtime Host and registration | `qwest-experience-platform`                            | Platform architecture, ADR-0005                  | Platform hosts and gates registered runtimes without rendering their behavior. |
+| Platform identity boundary    | `qwest-experience-platform`                            | Phase 6C evidence, ADR-0005                       | Platform presents identity and gates launch; runtimes authorize protected operations. |
+| Persistence ownership boundary | `qwest-experience-platform`                           | Phase 6D evidence, ADR-0005                       | Platform summaries and shared-service data never mutate runtime progress. |
+| Shared Platform services      | `qwest-experience-platform`                            | Platform roadmap and application architecture    | Services have explicit Platform sources of truth and do not reproduce runtime behavior. |
 | Canonical content model    | `story-song-qwest/docs`                                | Phase 4 spec, ADR if major                       | Schema impact and migration path are documented first.                               |
 | Runtime state engine       | `story-song-qwest`                                     | Phase 4 spec, runtime roadmap, ADR if major      | Pure engine boundaries and tests exist before UI consumption.                        |
 | Interaction taxonomy       | Shared concept, production-owned in `story-song-qwest` | Phase 4 spec, promotion audit, runtime milestone | StoryQwest and SongQwest variants are documented explicitly.                         |
@@ -268,6 +283,7 @@ Ask these questions in order.
 | Feature area            | Primary owner                                     | Required docs             | Promotion gate                                                              |
 | ----------------------- | ------------------------------------------------- | ------------------------- | --------------------------------------------------------------------------- |
 | Workspace orientation   | Root `README.md`, `docs/system-map.md`, this file | Architecture map          | New maintainers can identify owner and next document in under five minutes. |
+| Documentation taxonomy  | Root `docs/documentation-taxonomy.md`             | Taxonomy document         | Canonical, status, and historical evidence have distinct update rules. |
 | Product language        | Root `docs/product-language.md`                   | Product language          | Platform, runtime, Qwest, reserved terminology, naming principles, and experience personas have one source of truth. |
 | Phase specs             | `story-song-qwest/docs`                           | Phase 0-7 specs           | Phase docs define intent and constraints before build plans.                |
 | Promotion audit         | `qwest-experience-platform/docs`                   | Experience Lab audit      | Audit reflects current prototype readiness and gaps. Historical audits remain in `qwest-design-system/docs`. |
@@ -363,40 +379,32 @@ promotion level, and runtime milestone.
 ## SongQwest Flow
 
 ```text
-SongQwest phase specs
+Finalized audio produced outside SongQwest
         |
         v
-Experience Lab static listener/timeline evidence
+Creator Studio import-first workflow
         |
         v
-SongQwest lane, accessibility, audio, mixer, and contract validation
-        |
-        v
-Promotion audit readiness
-        |
-        v
-Runtime promotion level selected
-        |
-        v
-Runtime milestone scheduled
-        |
-        v
-story-song-qwest SongQwest runtime implementation
+Canonical Qwest validation and publishing
         |
         v
 Published bundle
         |
         v
-SongQwest listener runtime
+SongQwest Listener runtime
+        |
+        v
+Runtime-owned host adapter
+        |
+        v
+Experience Platform generic provider and Runtime Host
 ```
 
-SongQwest runtime work must not treat static Experience Lab evidence as
-runtime-ready. `/listener` and `/labs/song-authoring` currently provide
-prototype evidence for listener hierarchy, lyric states, timeline lanes, mobile
-layouts, audio fallback/accessibility states, authoring timeline concepts, and
-mixer diagnostics. Runtime promotion remains blocked until accessibility review,
-the audio runtime abstraction, mixer contracts, timeline contracts, and
-component-level promotion decisions are complete.
+SongQwest is a production runtime experience, not a DAW. Creator Studio imports
+finalized media, attaches lyrics and interactive narrative structure, previews
+the production Listener, validates, and publishes. Historical timeline, stem,
+mixer, fader, and waveform prototypes remain design history only. They are not
+active runtime, Creator Studio, or release prerequisites.
 
 ## Boundary Rules
 
@@ -429,8 +437,9 @@ component-level promotion decisions are complete.
 ### Never
 
 - Copy gallery or lab scaffolding directly into production runtime as-is.
-- Put Firebase, Cloudflare, auth, persistence, or production state logic in the
-  Experience Lab or legacy prototype repositories.
+- Put runtime Firebase, Cloudflare, protected-operation authorization, progress
+  persistence, or runtime state logic in the Experience Lab or legacy prototype
+  repositories. Platform identity and persistence boundaries remain Platform-owned.
 - Implement new production UI first when no prototype exists, unless explicitly
   approved as an urgent runtime fix.
 - Treat static fixture data as proof that runtime state integration is ready.
@@ -497,14 +506,15 @@ This architecture map is useful when:
 - A user-facing UI request clearly starts in the Experience Lab unless it is an
   approved runtime exception.
 - A production runtime request clearly routes to `story-song-qwest`.
-- A platform architecture request clearly routes to `story-song-qwest/docs`
-  before implementation.
+- A Platform architecture request clearly routes to
+  `qwest-experience-platform/docs` and a workspace ADR when cross-repository.
 - A UX validation request clearly routes to `qwest-experience-platform`.
-- A production-readiness request clearly routes through the promotion audit,
-  runtime roadmap, and runtime milestones.
-- SongQwest-specific work visibly depends on a real listener/timeline prototype.
-- SongQwest-specific work clearly distinguishes static evidence from validated
-  prototype, promotion candidate, and runtime-ready component.
+- A production-readiness request clearly distinguishes Experience Platform
+  Phase 9 from runtime M5.5/M5.6 and links the required evidence across both.
+- New SongQwest work builds on the production Listener and import-first Creator
+  workflow without treating historical timeline/mixer evidence as product scope.
+- SongQwest-specific work clearly distinguishes historical prototypes, new Lab
+  evidence, production runtime capability, and release certification.
 - Promotion status labels make it clear whether a feature is an idea,
   prototype, candidate, planned runtime work, integrated capability, archived
   reference, or blocked dependency.
@@ -513,10 +523,5 @@ This architecture map is useful when:
 
 1. Should the design system be formally React-capable, framework-neutral, or
    dual-mode?
-2. What is the canonical status source: Experience Lab metadata, the promotion
-   audit, runtime milestones, or a future shared tracking file?
-3. What minimum validation is required before a prototype can be marked
+2. What minimum validation is required before a prototype can be marked
    `Validated`?
-4. What is the first required SongQwest deliverable after static
-   listener/timeline evidence: accessibility review, audio abstraction, mixer
-   contract, timeline contract, or promotion-level decision record?
