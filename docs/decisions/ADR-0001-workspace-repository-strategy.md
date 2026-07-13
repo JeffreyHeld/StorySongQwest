@@ -70,3 +70,10 @@ The repositories may exchange artifacts and evidence, but they must not directly
 - Production implementation lives in `story-song-qwest`.
 - Promotion requires documented evidence and runtime-owned contracts.
 - Some duplication is expected during exploration; it becomes a problem only when it bypasses promotion review or persists after production integration.
+
+## Later Decisions
+
+[ADR-0005](ADR-0005-phase-6-platform-runtime-ownership.md) preserves this
+multi-repository strategy while narrowing the earlier assignment of “platform
+integration” and “persistence” after the bounded Experience Platform Phase 6
+architecture was implemented.
