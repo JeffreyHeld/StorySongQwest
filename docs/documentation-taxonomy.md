@@ -12,6 +12,7 @@ and only when the underlying decision changes.
 Examples:
 
 - `docs/architecture-map.md`
+- `docs/product-vision.md`
 - `docs/system-map.md`
 - `docs/product-language.md`
 - accepted ADRs in `docs/decisions/`
@@ -19,6 +20,13 @@ Examples:
 When a canonical decision changes, update the canonical map and write or
 supersede an ADR. Do not use a roadmap or milestone record to silently redefine
 ownership.
+
+Canonical authority is scoped by subject:
+
+- `docs/architecture-map.md` governs workspace ownership and feature routing.
+- `docs/product-vision.md` governs product purpose, experience principles, and
+  product-priority decisions.
+- `docs/product-language.md` governs terminology and naming.
 
 ## Status
 
@@ -74,4 +82,3 @@ the surrounding document does not make its scope obvious:
   specification.
 
 Completion in one track does not imply completion in another.
-

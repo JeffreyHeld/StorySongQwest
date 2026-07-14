@@ -36,8 +36,10 @@ Documentation authority flows in this order:
 README.md
   Navigation entry point
       ↓
-docs/architecture-map.md
-  Canonical workspace architecture and feature ownership
+Canonical workspace authorities
+  architecture-map.md: ownership and feature routing
+  product-vision.md: product purpose and experience principles
+  product-language.md: terminology and naming
       ↓
 System maps, runtime specs, promotion roadmaps, and phase specs
   Supporting detail, execution plans, and subordinate specifications
@@ -47,6 +49,9 @@ System maps, runtime specs, promotion roadmaps, and phase specs
   the right documents, but it does not supersede this architecture map.
 - `docs/architecture-map.md` is canonical for workspace architecture, repository
   ownership, feature routing, and promotion ownership.
+- `docs/product-vision.md` is canonical for product purpose, experience
+  principles, emotional standards, and the Product Decision Test. Phase specs,
+  roadmaps, milestones, and proposed Platform services must align with it.
 - `docs/product-language.md` is canonical for platform vocabulary, runtime
   vocabulary, Qwest mechanics, reserved terminology, naming principles, and the
   Explorer/Audience/Creator experience personas.
@@ -76,8 +81,9 @@ System maps, runtime specs, promotion roadmaps, and phase specs
   - `qwest-design-system`: the legacy UI prototype repository containing
     historical Experience Lab work, reference implementations, and archived
     experiments.
-- Product intent is captured in phase specifications under
-  `story-song-qwest/docs`.
+- Governing product intent is captured in `docs/product-vision.md`. Phase
+  specifications under `story-song-qwest/docs` translate that intent into
+  bounded product phases.
 - Historical Experience Lab readiness is captured in
   `qwest-design-system/docs/experience-lab-promotion-audit.md`. Active
   Experience Lab readiness should be documented in `qwest-experience-platform`
@@ -98,8 +104,12 @@ See `docs/system-map.md` for the compact dependency graph. The operational
 version is:
 
 ```text
+Qwest Product Vision
+  Purpose, experience principles, emotional standard, decision test
+        |
+        v
 Phase Specs
-  Product intent, canonical model, constraints, phase scope
+  Bounded phase scope aligned to canonical product intent
         |
         v
 qwest-experience-platform / Experience Lab
