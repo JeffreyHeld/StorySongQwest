@@ -1,5 +1,10 @@
 # ADR-0005: Phase 6 Platform And Runtime Ownership
 
+> **Qualified by ADR-0006:** The ownership boundaries in this decision remain
+> accepted. [ADR-0006](ADR-0006-qwest-medium-product-authority.md) changes Phase
+> 7 priority: Platform-owned services enter the phase only when directly
+> required to realize the canonical Qwest Product Vision.
+
 ## Status
 
 Accepted
@@ -81,9 +86,8 @@ was subsequently resolved by the production Listener and hosted adapter work.
   later milestones change global project status.
 - Roadmaps and readiness documents remain current-status sources and must not
   overstate production certification.
-- Phase 7 may build shared Platform services without reopening runtime ownership
-  unless new production evidence exposes a boundary defect.
+- Platform-owned services may be built without reopening runtime ownership, but
+  ADR-0006 governs whether they are active Phase 7 product priorities.
 - Physical-device validation, assistive-technology certification, durable offline
   infrastructure, production UI, Public Beta, deployment verification, and
   production launch remain separate future gates.
-

@@ -9,16 +9,18 @@ Read these documents in order:
 
 1. `docs/architecture-map.md` - canonical workspace routing, ownership, and
    promotion process.
-2. `docs/product-language.md` - canonical platform, runtime, Qwest, reserved
+2. `docs/product-vision.md` - canonical product purpose, experience principles,
+   emotional standard, and Product Decision Test.
+3. `docs/product-language.md` - canonical platform, runtime, Qwest, reserved
    terminology, and experience persona vocabulary.
-3. `docs/documentation-taxonomy.md` - canonical, status, and historical-evidence
+4. `docs/documentation-taxonomy.md` - canonical, status, and historical-evidence
    document roles.
-4. `docs/system-map.md` - compact dependency-flow summary.
-5. `qwest-experience-platform/README.md` - active Experience Lab and Platform
+5. `docs/system-map.md` - compact dependency-flow summary.
+6. `qwest-experience-platform/README.md` - active Experience Lab and Platform
    setup, bundle tooling, Bundle Explorer, Bundle Inspector, and foundation work.
-6. `qwest-design-system/README.md` - legacy prototype reference and historical
+7. `qwest-design-system/README.md` - legacy prototype reference and historical
    Experience Lab status.
-7. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
+8. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
    and deployment commands.
 
 ## Workspace Structure
@@ -41,8 +43,11 @@ adds optional branches, previews and validates the production runtime, and
 publishes. See `docs/product-language.md` for the canonical workflow.
 
 - Experience Platform Phase 6 production runtime integration architecture is
-  complete within its bounded 6A-6H ownership scope. Phase 7 shared Platform
-  services is the next planned Platform phase.
+  complete within its bounded 6A-6H ownership scope. Creator/product Phase 7 is
+  now **Build the Qwest Medium**. Platform Phase 7 work is limited to support
+  directly required by that product vision. Phase 7 is proven through one
+  Story-first and one Music-first production-path reference Qwest, using complete
+  vertical slices rather than broad partial systems.
 - Runtime milestone M5.5 Launch Readiness is Testing. M5.6 Public Beta,
   deployment validation, physical-device QA, assistive-technology certification,
   and production launch remain incomplete.
@@ -72,6 +77,8 @@ publishes. See `docs/product-language.md` for the canonical workflow.
 `README.md` is only the workspace entry point and short status summary.
 `docs/architecture-map.md` is the canonical source for repository ownership,
 feature routing, promotion states, boundary rules, and documentation governance.
+`docs/product-vision.md` is the canonical source for product purpose,
+experience principles, emotional standards, and the Product Decision Test.
 `docs/product-language.md` is the canonical source for platform, runtime, Qwest,
 reserved terminology, and Explorer/Audience/Creator experience personas.
 `docs/documentation-taxonomy.md` defines which documents are canonical, current

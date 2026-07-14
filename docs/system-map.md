@@ -18,7 +18,11 @@ document conflicts with `docs/architecture-map.md`, update this document or
 revise the architecture map first.
 
 ```text
-Product intent and canonical contracts
+Qwest Product Vision
+purpose, principles, emotional standard
+            |
+            v
+Phase scope and canonical contracts
             |
             v
 qwest-experience-platform
@@ -43,10 +47,14 @@ accessibility handoff
 
 ## Development Flow
 
-1. **Phase Specs**
-   - Phase 0–7 product and platform intent
+1. **Qwest Product Vision**
+   - Canonical purpose, experience principles, emotional standard, and Product
+     Decision Test
 
-2. **qwest-experience-platform**
+2. **Phase Specs**
+   - Bounded phase scope aligned to canonical product intent
+
+3. **qwest-experience-platform**
    - Active Experience Lab
    - Bundle tooling
    - Shared platform models
@@ -56,42 +64,42 @@ accessibility handoff
 Legacy `qwest-design-system` prototypes remain historical Experience Lab
 evidence and reference material while migration proceeds.
 
-3. **Static Evidence**
+4. **Static Evidence**
    - Reader
    - Listener
    - Authoring
    - Gallery
    - SongQwest listener/timeline evidence
 
-4. **Validation / Contracts**
+5. **Validation / Contracts**
    - UX review
    - Accessibility review
    - Runtime and adapter contracts
    - Data contracts
 
-5. **Promotion Candidate**
+6. **Promotion Candidate**
    - Validated evidence
    - Explicit promotion level
    - Blockers resolved or documented
 
-6. **Runtime Planned**
+7. **Runtime Planned**
    - Runtime milestone
    - Acceptance criteria
    - Verification steps
 
-7. **Production Runtime**
+8. **Production Runtime**
    - StoryQwest runtime
    - SongQwest runtime
 
-8. **Integrated**
+9. **Integrated**
    - Runtime implementation complete
    - Tests and docs complete
    - Prototype disposition recorded
 
-9. **Published Bundle**
+10. **Published Bundle**
    - Portable Qwest output
 
-10. **Reader / Listener Runtime**
+11. **Reader / Listener Runtime**
     - StoryQwest reader experience
     - SongQwest listener experience
 

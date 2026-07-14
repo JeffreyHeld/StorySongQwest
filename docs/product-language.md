@@ -89,6 +89,8 @@ baseline. Any future exploration of those capabilities is optional.
 
 ## Related Documents
 
+- `docs/product-vision.md` governs product purpose, experience principles,
+  emotional standards, and the Product Decision Test.
 - `docs/architecture-map.md` governs workspace architecture, repository
   ownership, feature routing, and promotion ownership.
 - `docs/system-map.md` summarizes the Platform, Runtime, and Qwest terminology
@@ -444,6 +446,8 @@ Primary goal: create, refine, publish, and manage creative works.
   an in-Qwest mechanic.
 - Reserve domain terminology for Qwest mechanics.
 - Keep platform vocabulary distinct from runtime vocabulary.
+- Use the Qwest Product Vision to decide whether a correctly named concept
+  belongs in the product at all.
 - Shared experiences should remain media-agnostic whenever practical.
 - Qualify terms when context could be ambiguous, such as Public Profile,
   Creator Profile, Runtime Timeline, or Media Library.

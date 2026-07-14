@@ -1,5 +1,10 @@
 # ADR-0004: Documentation Governance
 
+> **Extended by ADR-0006:** The hierarchy below remains accepted for workspace
+> architecture. [ADR-0006](ADR-0006-qwest-medium-product-authority.md) adds
+> `docs/product-vision.md` as the canonical authority for product purpose,
+> experience principles, emotional standards, and product-priority decisions.
+
 ## Status
 
 Accepted
