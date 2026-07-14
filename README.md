@@ -13,14 +13,17 @@ Read these documents in order:
    emotional standard, and Product Decision Test.
 3. `docs/product-language.md` - canonical platform, runtime, Qwest, reserved
    terminology, and experience persona vocabulary.
-4. `docs/documentation-taxonomy.md` - canonical, status, and historical-evidence
+4. `docs/qwest-content-model/overview.md` - canonical published Qwest content
+   model and links to its manuscript, section, runtime graph, media,
+   interaction, world, map, journal, progress, and validation contracts.
+5. `docs/documentation-taxonomy.md` - canonical, status, and historical-evidence
    document roles.
-5. `docs/system-map.md` - compact dependency-flow summary.
-6. `qwest-experience-platform/README.md` - active Experience Lab and Platform
+6. `docs/system-map.md` - compact dependency-flow summary.
+7. `qwest-experience-platform/README.md` - active Experience Lab and Platform
    setup, bundle tooling, Bundle Explorer, Bundle Inspector, and foundation work.
-7. `qwest-design-system/README.md` - legacy prototype reference and historical
+8. `qwest-design-system/README.md` - legacy prototype reference and historical
    Experience Lab status.
-8. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
+9. `story-song-qwest/README.md` - production runtime setup, build, test, bundle,
    and deployment commands.
 
 ## Workspace Structure
@@ -30,7 +33,7 @@ StorySongQwest/
 ├── qwest-experience-platform/ # Git repo: active Experience Lab and platform foundation
 ├── qwest-design-system/       # Git repo: legacy UI prototype reference
 ├── story-song-qwest/         # Git repo: product runtime, platform, publishing
-├── docs/                     # Root Git repo: workspace maps, standards, ADRs
+├── docs/                     # Root Git repo: workspace maps, content model, standards, ADRs
 └── README.md                 # Workspace entry point
 ```
 
@@ -81,6 +84,10 @@ feature routing, promotion states, boundary rules, and documentation governance.
 experience principles, emotional standards, and the Product Decision Test.
 `docs/product-language.md` is the canonical source for platform, runtime, Qwest,
 reserved terminology, and Explorer/Audience/Creator experience personas.
+`docs/qwest-content-model/` is the canonical source for the published Qwest
+content model, manuscript/runtime graph relationship, sections, media,
+interactions, world data, maps, journal knowledge, progress, and validation
+contracts.
 `docs/documentation-taxonomy.md` defines which documents are canonical, current
 status, or historical evidence.
 [ADR-0005](docs/decisions/ADR-0005-phase-6-platform-runtime-ownership.md)

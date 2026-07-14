@@ -15,6 +15,7 @@ Examples:
 - `docs/product-vision.md`
 - `docs/system-map.md`
 - `docs/product-language.md`
+- `docs/qwest-content-model/overview.md` and its subject documents
 - accepted ADRs in `docs/decisions/`
 
 When a canonical decision changes, update the canonical map and write or
@@ -27,6 +28,9 @@ Canonical authority is scoped by subject:
 - `docs/product-vision.md` governs product purpose, experience principles, and
   product-priority decisions.
 - `docs/product-language.md` governs terminology and naming.
+- `docs/qwest-content-model/` governs the published Qwest content model and its
+  manuscript, section, runtime graph, media, interaction, world, map, journal,
+  progress, and validation contracts.
 
 ## Status
 
