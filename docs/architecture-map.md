@@ -55,6 +55,10 @@ System maps, runtime specs, promotion roadmaps, and phase specs
 - `docs/product-language.md` is canonical for platform vocabulary, runtime
   vocabulary, Qwest mechanics, reserved terminology, naming principles, and the
   Explorer/Audience/Creator experience personas.
+- `docs/qwest-content-model/` is canonical for the published Qwest content model
+  and its manuscript, section, runtime graph, media, interaction, world, map,
+  journal, progress, and validation contracts. Phase specifications explain
+  delivery context but do not supersede these contracts.
 - `docs/system-map.md` is a compact supporting diagram and development-flow
   summary.
 - Runtime specs, phase specs, promotion roadmaps, milestone plans, and promotion
@@ -165,7 +169,7 @@ Reader / Listener Runtime
 | New Cloudflare behavior                    | `story-song-qwest`                                                                | Worker runtime, deployment, variables, bindings, and edge behavior are production concerns.                               |
 | Publishing or bundle export change         | `story-song-qwest`                                                                | Bundles are production artifacts emitted by the runtime/publishing pipeline.                                              |
 | Bundle fixture for visual QA               | `qwest-experience-platform` or exported from `story-song-qwest`                   | Lab fixtures validate presentation; production owns canonical export. Historical fixtures may remain in `qwest-design-system/public/bundles`. |
-| Canonical content model change             | `story-song-qwest/docs` first, then runtime                                       | Schema and runtime architecture require explicit documentation before implementation.                                     |
+| Canonical content model change             | Root `docs/qwest-content-model/` first, then `story-song-qwest` runtime and runtime docs | Schema and runtime architecture require explicit canonical documentation before implementation.                       |
 | Platform architecture decision             | `qwest-experience-platform/docs` and workspace ADRs                               | Platform ownership belongs with the Platform; cross-workspace decisions are recorded at the root.                         |
 | Promotion readiness assessment             | `qwest-experience-platform/docs`                                                  | Active audits record what the lab has proven and what remains missing. Historical audits remain in `qwest-design-system/docs`. |
 | Promotion process rule                     | `story-song-qwest/docs/songqwest-storyqwest-phase-5-runtime-promotion-roadmap.md` | The roadmap defines how prototypes become runtime.                                                                        |
