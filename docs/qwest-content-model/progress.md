@@ -19,8 +19,11 @@ type QwestProgress = {
   id: string;
   playerId?: string;
   qwestId: string;
-  qwestVersion: string;
   schemaVersion: number;
+  publication: ProgressPublicationIdentity;
+  versionContinuity?: ProgressVersionContinuity;
+  /** Temporary compatibility field for older persisted documents. */
+  qwestVersion?: string;
 
   navigation: ProgressNavigation;
   storyState: StoryState;
@@ -37,6 +40,65 @@ type QwestProgress = {
   updatedAt: string;
 };
 ```
+
+`schemaVersion` identifies the persisted progress-document shape. It is not a
+published-content version. `publication.versionId` identifies the immutable
+published bundle against which the progress was last validated and saved.
+
+```ts
+type ProgressPublicationIdentity = {
+  versionId: string;
+  firstOpenedVersionId?: string;
+  bundleHash?: string;
+};
+
+type ProgressVersionContinuity = {
+  evaluatedVersionId?: string;
+  status:
+    | "current"
+    | "compatible"
+    | "migrated"
+    | "confirmationRequired"
+    | "restartRequired"
+    | "legacyVersion"
+    | "unavailable";
+  migration?: ProgressMigrationRecord;
+  retainedVersionId?: string;
+};
+
+type ProgressMigrationRecord = {
+  fromVersionId: string;
+  toVersionId: string;
+  migratedAt: string;
+  outcome:
+    | "exact"
+    | "textRunFallback"
+    | "sectionFallback"
+    | "nodeFallback"
+    | "firstReadableFallback"
+    | "restartRequired";
+  reason?:
+    | "publicationUpdated"
+    | "nodeRemoved"
+    | "textRunRemoved"
+    | "mediaChanged"
+    | "choiceChanged"
+    | "runtimeCompatibilityChanged";
+  previousLocation?: ProgressLocationSnapshot;
+  resolvedLocation?: ProgressLocationSnapshot;
+};
+
+type ProgressLocationSnapshot = {
+  nodeId?: string;
+  textRunId?: string;
+  playbackPositionMs?: number;
+};
+```
+
+The deprecated `qwestVersion` field is read only during bounded legacy
+migration. New writes use `publication.versionId`; a missing publication
+identity enters explicit legacy resolution rather than being assumed current.
+Legacy migration is idempotent and must not invent `firstOpenedVersionId`.
 
 `QwestProgress` is logically divided into navigation, story state, scoring, statistics, and reader-created content. This keeps the persisted document extensible without turning the root object into a flat list of unrelated fields.
 
@@ -205,7 +267,7 @@ Persistence behavior should support:
 - resume from `resumeLocation` when present, with fallback to the latest valid `navigation.currentNodeId` and `navigation.currentReadingPosition`
 - offline compatibility through a local durable progress document that can later synchronize with an authenticated profile
 - synchronization boundaries that merge progress events and summaries without allowing stale device state to erase newer real progress
-- document versioning through `schemaVersion` and `qwestVersion`
+- document versioning through `schemaVersion`, separate from publication identity
 - migration from older progress documents into the current `QwestProgress` shape
 - future cloud sync without changing the Qwest content model
 - reset behavior that clears Qwest-specific progress without deleting global reader preferences or unrelated UserState aggregates
@@ -214,6 +276,42 @@ Persistence behavior should support:
 Autosave must preserve intent, not renderer detail. For example, scroll position may be saved as a resume hint, but the canonical progress record should still be valid if a future runtime resumes by node and text run instead.
 
 When a saved position references content that no longer exists in the current published Qwest version, the runtime should migrate to the closest valid ancestor or next readable node and record that migration as implementation metadata.
+
+### Published Version Continuity
+
+Every successful publish creates a new immutable bundle and updates the Qwest's
+current-published pointer only after the bundle is available. Publishing never
+rewrites active audience progress and never mutates a prior published bundle.
+
+Fresh starts resolve the current published version. Continue first compares the
+saved `publication.versionId` with that current version, before mounting normal
+runtime autosave. Matching progress continues normally. Different versions are
+evaluated with both immutable bundles and then resolved as compatible,
+confirmation-required, restart-required, legacy, or unavailable.
+
+The Runtime Host owns version selection, comparison, persistence gating, and the
+audience decision. StoryQwest owns node, text-run, choice, discovery, reveal,
+ending, bookmark, and note resolution. SongQwest owns structural context,
+playback checkpoints, playback position, lyrics/transcript fallbacks, and
+Song-specific runtime data. The host does not interpret those detailed runtime
+fields, and runtimes do not select the current publication independently.
+
+Compatible migration updates `publication.versionId` only after validation
+succeeds and records a diagnostic `ProgressMigrationRecord`. Material but
+recoverable changes may ask the audience whether to continue from the closest
+matching place or restart. Incompatible changes preserve the prior canonical
+progress, offer safe restart or Library actions, and may retain the exact prior
+immutable bundle for bounded legacy continuation. A restart stores a recoverable
+snapshot before replacing the active progress. Migration writes use revision or
+publication ordering checks so stale devices cannot move a completed migration
+backward.
+
+StoryQwest fallback order is saved text-run position, current text run, current
+node start, authored ancestor/successor, first readable node, then restart
+required. SongQwest fallback order is saved checkpoint, saved playback position,
+Song/structural section start, structural node start, first playable section,
+first readable section, then restart required. A changed media reference alone
+does not reset the full Qwest when the structural section remains valid.
 
 QwestProgress should remain the canonical public persistence contract: one player, one Qwest, one progress document. Implementations should not prematurely expose bookmarks, score events, choices, or other progress components as separate public source-of-truth documents. If a runtime eventually needs internal sharding for storage limits or synchronization performance, it may do so behind this contract while preserving the same logical QwestProgress shape.
 
