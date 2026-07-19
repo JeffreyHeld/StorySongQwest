@@ -74,6 +74,8 @@ Validation should detect:
 - Invalid reader theme ID.
 - Invalid reader theme font, surface, block, spacing, scale, or accent token.
 - Reader theme values outside approved ranges.
+- Reader theme environments, reading surfaces, presets, and accents outside
+  their approved registries.
 - Reader theme values that attempt raw CSS, external font URLs, script injection, or app-shell styling.
 - Invalid ambient effect ID.
 - Ambient rules that reference unregistered effect IDs.
@@ -179,6 +181,9 @@ Reader Theme behavior is successful when:
 
 - A Qwest with no `readerTheme` uses the default reader theme.
 - A Qwest with a valid `readerTheme` changes only story typography and story surface presentation.
+- A missing authored Foundation environment uses the deterministic runtime
+  compatibility default; it is never inferred from a Reader preset, reading
+  surface, or accent.
 - App shell typography and controls do not change when a Qwest theme is applied.
 - Reader toolbar, account/auth UI, editor/creator UI, global buttons, and menus keep platform styling.
 - Invalid theme IDs fall back safely to the default reader theme.

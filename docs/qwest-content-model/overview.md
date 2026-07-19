@@ -2,7 +2,7 @@
 
 > **Documentation class: Canonical.** This document defines the durable published Qwest bundle boundary and Qwest-level metadata contract. It was separated from the [Phase 4 implementation specification](../../story-song-qwest/docs/songqwest-storyqwest-phase-4-unified-content-model-runtime-platorm.md) so later phase status cannot silently redefine the contract.
 
-[Content Model Overview](overview.md) · [Manuscript](manuscript.md) · [Sections](sections.md) · [Runtime Graph](runtime-graph.md) · [Media](media.md) · [Interactions](interactions.md) · [World](world.md) · [Maps](maps.md) · [Journal](journal.md) · [Progress](progress.md) · [Validation](validation.md)
+[Content Model Overview](overview.md) · [Presentation](presentation.md) · [Manuscript](manuscript.md) · [Sections](sections.md) · [Runtime Graph](runtime-graph.md) · [Media](media.md) · [Interactions](interactions.md) · [World](world.md) · [Maps](maps.md) · [Journal](journal.md) · [Progress](progress.md) · [Validation](validation.md)
 
 ## Core Rule
 
@@ -127,3 +127,7 @@ type QwestMetadata = {
 ```
 
 `readerTheme` is the preferred property name because the theme applies only to the reader story surface. `theme` is allowed as a compatibility alias if existing content, importers, or tools already use that name. Published bundles should normalize to `readerTheme` where possible.
+
+The authored presentation axes and their runtime ownership are defined in
+[Qwest Presentation Metadata](presentation.md). In particular, a Foundation
+environment is distinct from a Reader preset, reading surface, and accent.
